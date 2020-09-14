@@ -1,55 +1,49 @@
 <div class="heading1 noti" >
     Notifications
 </div>
-
+<!-- {{notice[1]}} -->
 <div class="noti-display">
-    <div class="notification adj">
-
-            
-        <table class="layout display sub-text">
-          
+    <div class="notification adj">         
+        <table class="layout display sub-text" >   
+            <colgroup>
+            <col class="date">
+        <col class="title">
+    <col class="big link"></colgroup>         
             <tbody>
-              
-                   
-                   <tr *ngFor = "let noti of notifications,i as index">
-                    
+                 <tr *ngFor = "let noti of notification">
                     <td >
-                        <!-- <div *ngIf="check(i)"></div> -->
-                       <b>Date:</b>{{noti.title.slice(0,10)}}
+                       <b>Date:</b>{{noti.date}}
                     </td>
-                    <td >
-                       <b>Title:</b>{{noti.title.slice(11)}}
+                    <td colspan="2">
+                       <b>Title:</b>{{noti.title}}
+                       <br>
                        <div class="small"><b>Link:</b><a target="_blank" [href]=noti.link>{{noti.link}}</a></div>
-                    </td>
-                   
-                   <td class="big">
+                    </td>                   
+                   <td class="big" >
                     <b>Link:</b><a target="_blank" [href]=noti.link>{{noti.link}}</a>
                     </td>
-                   </tr>
-                   
+                   </tr>                  
             </tbody>
-        
-               
-        
         </table>
     </div>
     <div class="data">
+      
+        <div class="notidata">
+            <div class="sub-head" style="color: black;" >Total notification :{{notification.length}}</div> 
+            <div class="sub-head" style="color: green;">Latest notification :{{latest}}</div>
+            <div class="sub-head" style="color:red ;">Oldest notification :{{oldest}}</div>
+        </div>
         <div class="search">
             
-           <div class="sub-head">Search for Date...{{check(0)}}</div>
-           <div class="search_input" id="search_input_box">
-            <div class="container">
-              <form class=" justify-content-between" style="display: flex;">
-                <input type="text" class="form-control" id="search_input" placeholder="Search Here">
-                <button type="submit" class="btn"></button>
-               
-              </form>
-            </div>
-        </div>
-        <div class="notidata">
-            <div class="sub-head" style="color: black;">Total notification :{{notifications.length}}</div>
-            <div class="sub-head" style="color: green;">Latest notification :{{notifications[0].title.slice(0,10)}}</div>
-            <div class="sub-head" style="color:red ;">OLdest notification :{{notifications[notifications.length-1].title.slice(0,10)}}</div>
-        </div>
+            <div class="sub-head">Search for Date...</div>
+            <div class="search_input" id="search_input_box">
+             <div class="container">
+               <form class=" justify-content-between" style="display: flex;">
+                 <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+                 <button type="submit" class="btn"></button>
+                
+               </form>
+             </div>
+         </div>
     </div>
 </div>
