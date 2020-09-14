@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetDataService } from '../get-data.service';
 
 @Component({
   selector: 'app-hospitals',
@@ -6,12 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hospitals.component.scss']
 })
 export class HospitalsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
- 
+  public statecollegebeds_api
+  public state
+  public summary
+  public medicalcollegebeds_api
+  public medicalbeds
+  
+    constructor(private Getdata:GetDataService) { }
+  
+    ngOnInit() {
+      this.Getdata.get_task3a().subscribe(c=>{
+        this.statecollegebeds_api=c
+       this.state=this.statecollegebeds_api.data.regional
+       this.summary=this.statecollegebeds_api.data.summary
+      })
+      this.Getdata.get_task3b().subscribe(c=>{
+        this.medicalcollegebeds_api=c
+        this.medicalbeds=this.medicalcollegebeds_api.data.medicalColleges
+      })
+    }
   cartarr=[{
     "state": "A & N Islands",
     "name": "Andaman & Nicobar Islands Insitute of Medical Sciences, Port Blair",
